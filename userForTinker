@@ -1,0 +1,7 @@
+$user = new App\Models\User;
+
+$user->name = 'Thiago Mine';
+$user->email = 'thiago.mine88@gmail.com';
+$user->password = bcrypt('123456');
+
+$user->save();
