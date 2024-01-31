@@ -22,6 +22,15 @@ return new class extends Migration
     {
         $products = array(
             [
+                'name' => 'Produto não cadastrado',
+                'seo_name' => 'produto_nao_cadastrado',
+                'description' => 'Produto não cadastrado',
+                'type' => 1,
+                'category_id' => null,
+                'price' => 0,
+                'is_active' => true
+            ],
+            [
                 'name' => 'Misto Quente',
                 'seo_name' => 'misto_quente',
                 'description' => 'Batata Palha, 2 Presuntos, 2 Mussarelas',
