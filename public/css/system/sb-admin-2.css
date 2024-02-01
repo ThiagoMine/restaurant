@@ -4024,6 +4024,9 @@ input[type="button"].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -11468,6 +11471,10 @@ img.option-icon {
   cursor: pointer;
   font-size: 15px;
   color: blue;
+}
+
+li.nav-item {
+  width: 100%;
 }
 
 @media (max-width: 780px) {

@@ -21,6 +21,7 @@ class ProductList extends Model
         "order_id",
         "value",
         "comment",
+        "name",
         "related_product_id"
     ];
 

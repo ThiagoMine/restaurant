@@ -50,7 +50,6 @@ class OrderControl extends Controller
 
     public function createOrder(Request $request)
     {
-        // dd($request);
         $items = $request->items;
         $command = $request->command;
         $purchase = $this->purchaseRepository->getPurchaseByCommandId($command);
@@ -68,14 +67,28 @@ class OrderControl extends Controller
             if ($order) {
                 foreach ($items as $item) {
                     $product = $this->productRepository->getById($item['product-id']);
-                    $data = array(
-                        "product_id" => $product->id,
-                        "order_id" => $order->id,
-                        "value" => $product->price,
-                        "comment" => $item['comment'],
-                        "related_product_id" => null
-                    );
 
+                    if ($product->id === 1 ) {
+                        $data = array(
+                            "product_id" => $product->id,
+                            "order_id" => $order->id,
+                            "value" => $item['product-price'],
+                            "name" => $item['product-name'],
+                            "comment" => $item['comment'],
+                            "related_product_id" => null
+                        );    
+                    } else {
+                        $data = array(
+                            "product_id" => $product->id,
+                            "order_id" => $order->id,
+                            "value" => $product->price,
+                            "comment" => $item['comment'],
+                            "name" => $product->name,
+                            "related_product_id" => null
+                        );
+    
+                    }
+                    
                     $this->productListRepository->insert($data);
 
                     if (isset($item["additional-id"])){

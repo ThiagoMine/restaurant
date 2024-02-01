@@ -161,7 +161,7 @@
                         <form class="order-add-form">
                             <div class="obs form-group">
                                 <h5>Informações Adicionais</h5>
-                                <textarea class="form-control obs" name="obs" cols="60" rows="15"></textarea>
+                                <textarea class="form-control obs" name="obs" cols="50" rows="10"></textarea>
                             </div>
                             <hr>
                             @if (isset($category['additionals']) && (count($category['additionals']) >0))
@@ -178,6 +178,28 @@
                                 </div>
                             @endif
 
+                            @if ($category['id'] == 8)
+                                <div class="form-group">
+                                    <label for="product-name" class="fs-15em ">Nome do Produto:</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control w-50" 
+                                        id="product-name" 
+                                        name="product-name" 
+                                        placeholder="Informe o nome do Produto"
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="product-price" class="fs-15em ">Valor do Produto:</label>
+                                    <input 
+                                        type="number" 
+                                        class="form-control w-50" 
+                                        id="product-price" 
+                                        name="product-price" 
+                                        placeholder="Informe o nome do Produto"
+                                    >
+                                </div>
+                            @endif
                             <div class="hidden product-information">
                                 
                             </div>

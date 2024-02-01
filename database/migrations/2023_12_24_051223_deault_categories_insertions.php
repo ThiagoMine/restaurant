@@ -53,7 +53,13 @@ return new class extends Migration
                 'seo_name' => 'pasteis',
                 'is_active' => true,
                 'father_category_id' => null
-            ]            
+            ],
+            [
+                'name' => 'Produtos não cadastrados',
+                'seo_name' => 'produtos_nao_cadastrados',
+                'is_active' => true,
+                'father_category_id' => null
+            ]           
         );
 
         DB::table('categories')->insert($categories);

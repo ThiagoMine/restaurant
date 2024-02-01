@@ -7,7 +7,9 @@ $('.addProductModal').click('click', function() {
     var productNameHtml = '<input type="text" name="product-name" id="product-name" value="'+productName+'">';
 
     $('#addProductModal-'+category+' .product-information').append(productIdHtml);
-    $('#addProductModal-'+category+' .product-information').append(productNameHtml);
+    if (category != "produtos_nao_cadastrados"){
+        $('#addProductModal-'+category+' .product-information').append(productNameHtml);
+    }
 
     $('#addProductModal-'+category).modal('show');
 });
@@ -21,7 +23,6 @@ $('.btn-add-product').click('click', function() {
     
 
     var formDataArray = $('#addProductModal-'+category+' .order-add-form').serializeArray();
-    console.log(items, formDataArray);
     var printHtml = '<div class="product">';
     var printProductHtml = '';
     var printCommentHtml = '';
@@ -51,11 +52,15 @@ $('.btn-add-product').click('click', function() {
                 formHtml = formHtml + '<input type="hidden" name="items['+items.length+'][product-id]" value="'+element.value+'"></input>';
                 break;
             case 'product-name':
+                formHtml = formHtml + '<input type="hidden" name="items['+items.length+'][product-name]" value="'+element.value+'"></input>';
                 printProductHtml = printProductHtml + 
                     '<div class="content w-100 d-flex justify-content-between flex-wrap mb-2"><div><span class="name text-gray-900 fs-15em">' +
                     element.value +
                     '</span></div>' +
                     '<a href="#" class="btn btn-sm btn-danger btn-icon-split btn-remove-product"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Remover Item</span></a></div>';
+                break;
+            case 'product-price':
+                formHtml = formHtml + '<input type="hidden" name="items['+items.length+'][product-price]" value="'+element.value+'"></input>';
                 break;
         }
     });

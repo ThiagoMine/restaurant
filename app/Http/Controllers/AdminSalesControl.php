@@ -82,12 +82,12 @@ class AdminSalesControl extends Controller
 
                         if ($product->related_product_id === null) {
                             $productsArray[$product->product_id] = array(
-                                "name" => $productDetail->name,
+                                "name" => $product->name,
                                 "value" => $product->value
                             );
                         } else {
                             $productsArray[$product->related_product_id]['additionals'][] = array(
-                                "name" => $productDetail->name,
+                                "name" => $product->name,
                                 "value" => $product->value
                             );
                         }

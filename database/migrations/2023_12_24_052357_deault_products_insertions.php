@@ -26,7 +26,7 @@ return new class extends Migration
                 'seo_name' => 'produto_nao_cadastrado',
                 'description' => 'Produto não cadastrado',
                 'type' => 1,
-                'category_id' => null,
+                'category_id' => 8,
                 'price' => 0,
                 'is_active' => true
             ],
