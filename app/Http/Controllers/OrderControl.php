@@ -68,26 +68,14 @@ class OrderControl extends Controller
                 foreach ($items as $item) {
                     $product = $this->productRepository->getById($item['product-id']);
 
-                    if ($product->id === 1 ) {
-                        $data = array(
-                            "product_id" => $product->id,
-                            "order_id" => $order->id,
-                            "value" => $item['product-price'],
-                            "name" => $item['product-name'],
-                            "comment" => $item['comment'],
-                            "related_product_id" => null
-                        );    
-                    } else {
-                        $data = array(
-                            "product_id" => $product->id,
-                            "order_id" => $order->id,
-                            "value" => $product->price,
-                            "comment" => $item['comment'],
-                            "name" => $product->name,
-                            "related_product_id" => null
-                        );
-    
-                    }
+                    $data = array(
+                        "product_id" => $product->id,
+                        "order_id" => $order->id,
+                        "value" => $item['product-price'],
+                        "name" => $item['product-name'],
+                        "comment" => $item['comment'],
+                        "related_product_id" => null
+                    );
                     
                     $this->productListRepository->insert($data);
 
@@ -131,7 +119,7 @@ class OrderControl extends Controller
                     $productDetail = $this->productRepository->getById($product->product_id);
 
                     if ($product->related_product_id === null) {
-                        $productsArray[$product->product_id]['name'] = $productDetail->name;
+                        $productsArray[$product->product_id]['name'] = $product->name;
                         $productsArray[$product->product_id]['comments'] = $product->comment;
                     } else {
                         $productsArray[$product->related_product_id]['additionals'][] = $productDetail->name;

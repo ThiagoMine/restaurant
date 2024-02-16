@@ -71,7 +71,10 @@
                                                                         <span>adicionar</span>
                                                                     </a>	 --}}
                                                                     <a class="btn btn-lg btn-success mx-2 addProductModal" href="#"
-                                                                        data-productid="{{$product['id']}}" data-name="{{$product['name']}}" 
+                                                                        data-productid="{{$product['id']}}" 
+                                                                        data-name="{{$product['name']}}" 
+                                                                        data-price="{{$product['price']}}" 
+                                                                        data-categoryId="{{$product['id']}}" 
                                                                         data-category="{{$category['seo_name']}}">
                                                                         <span>adicionar</span>
                                                                     </a>					
@@ -171,7 +174,7 @@
                                     <div class="form-group aditional-item w-30">
                                         <div class="form-check form-check-lg">
                                             <input type="checkbox" class="form-check-input" name="additionals" id="{{$additional['seo_name']}}" value="{{$additional['id']}} - {{$additional['name']}}">
-                                            <label class="form-check-label" for="catupiry">{{$additional['name']}}</label>
+                                            <label class="form-check-label" for="{{$additional['seo_name']}}">{{$additional['name']}}</label>
                                         </div>
                                     </div>
                                 @endforeach
@@ -199,6 +202,21 @@
                                         placeholder="Informe o nome do Produto"
                                     >
                                 </div>
+                            @endif
+                            @if ($category['id'] == 4 && isset($category['products']) && (count($category['products']) >0))
+                            <div class="form-group half-item w-30">
+                                <div class="form-check form-check-lg">
+                                    <input type="checkbox" class="form-check-input" name="has_half" id="has_half" value="has_half">
+                                    <label class="form-check-label" for="has_half">É meia a meia</label>
+                                </div>
+                                <div class="form-select select-half hidden">
+                                    <select class="form-select" name="half" id="half">
+                                        @foreach ($category['products'] as $product)
+                                            <option value="{{ $product['name']."|".$product['price']."|".$product['id'] }}">{{ $product['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             @endif
                             <div class="hidden product-information">
                                 
